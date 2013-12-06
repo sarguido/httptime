@@ -1,5 +1,5 @@
 '''TODO:
--More object(s)?
+-More timestamp objects, and maybe better names
 -Add date functions
 -Refactor for better?
 -Documentation
@@ -8,8 +8,6 @@
 import re
 import datetime
 import calendar
-
-version = '0.1'
 
 # If your timestamp looks like 06/Dec/2011:13:12:48
 
@@ -37,12 +35,13 @@ class DateSlashTimeColon(object):
 		return hour, minute, second
 
 # Time functions
-# Should this go in a class?
+# Separate?
 
 # Converts time from timestamp to seconds
-def time_to_seconds(time):
-	h, m, s = [int(i) for i in time.split(':')]
-	return (3600 * h) + (60 * m) + s
+
+ def time_to_seconds(time):
+    h, m, s = [int(i) for i in time.split(':')]
+    return (3600 * h) + (60 * m) + s
 
 # Converts seconds to time -- don't think I need this
 #def seconds_to_time(seconds):
@@ -51,7 +50,7 @@ def time_to_seconds(time):
 # Calculates time difference
 def calculate_time_difference(time1, time2):
 	sec = time_to_seconds(time2) - time_to_seconds(time1)
-	return datetime.timedelta(seconds = sec)
+	return datetime.timedelta(seconds = abs(sec))
 
 # Calculates time addition
 def calculate_time_addition(time1, time2):
@@ -59,23 +58,26 @@ def calculate_time_addition(time1, time2):
 	return datetime.timedelta(seconds = sec)
 
 # Date functions
-# Should these go in a class?
+# Separate
 
 # Get the month number
 def month_number(month):
-	month = month[0:4]
+	month = month[0:3]
 	cal = dict((v,k) for k,v in enumerate(calendar.month_abbr))
 	if month in cal.keys():
-		return cal[month]
+		return int(cal[month])
 
 # Find number of days between two dates
-def day_difference(day1, day2):
+#def day_difference(day1, day2):
 
 
 # Find number of months between two months
 def month_difference(month1, month2):
-
-
+	if not isinstance(month1, int):
+		month1 = month_number(month1)
+	if not isinstance(month2, int):
+		month2 = month_number(month2)
+	return abs(month2 - month1)
 
 
 
