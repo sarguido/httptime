@@ -1,13 +1,13 @@
 '''TODO:
--Flesh out object(s)
+-More object(s)?
 -Add date functions
--Refactor for better
+-Refactor for better?
 -Documentation
 -Examples'''
 
-import sqlite3
 import re
 import datetime
+import calendar
 
 version = '0.1'
 
@@ -37,15 +37,16 @@ class DateSlashTimeColon(object):
 		return hour, minute, second
 
 # Time functions
+# Should this go in a class?
 
 # Converts time from timestamp to seconds
 def time_to_seconds(time):
 	h, m, s = [int(i) for i in time.split(':')]
 	return (3600 * h) + (60 * m) + s
 
-# Converts seconds to time
-def seconds_to_time(seconds):
-	return datetime.timedelta(seconds = sec)
+# Converts seconds to time -- don't think I need this
+#def seconds_to_time(seconds):
+#	return datetime.timedelta(seconds = sec)
 
 # Calculates time difference
 def calculate_time_difference(time1, time2):
@@ -58,4 +59,23 @@ def calculate_time_addition(time1, time2):
 	return datetime.timedelta(seconds = sec)
 
 # Date functions
+# Should these go in a class?
+
+# Get the month number
+def month_number(month):
+	month = month[0:4]
+	cal = dict((v,k) for k,v in enumerate(calendar.month_abbr))
+	if month in cal.keys():
+		return cal[month]
+
+# Find number of days between two dates
+def day_difference(day1, day2):
+
+
+# Find number of months between two months
+def month_difference(month1, month2):
+
+
+
+
 
