@@ -1,5 +1,5 @@
-from sqltime import DateSlashTimeColon
-import sqltime as s
+from httptime import DateSlashTimeColon
+import httptime as s
 
 timestamp = DateSlashTimeColon('06/Dec/2011:13:12:48')
 timestamp2 = DateSlashTimeColon('24/Mar/2009:06:45:08')
