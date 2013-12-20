@@ -1,7 +1,7 @@
 '''TODO:
 -More timestamp objects, and maybe better names
 -Add date functions
--Refactor for better?
+-Maybe break time and date functions into separate files
 -Documentation
 -Examples'''
 
@@ -35,7 +35,6 @@ class DateSlashTimeColon(object):
 		return hour, minute, second
 
 # Time functions
-# Separate?
 
 # Converts time from timestamp to seconds
 
@@ -58,7 +57,6 @@ def calculate_time_addition(time1, time2):
 	return datetime.timedelta(seconds = sec)
 
 # Date functions
-# Separate
 
 # Get the month number
 def month_number(month):
